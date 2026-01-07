@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritika Tech Hub - Complete Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Ritika Tech Hub</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#roadmaps" class="nav-link">Roadmaps</a>
+                <a href="#challenges" class="nav-link">Challenges</a>
+                <a href="#playground" class="nav-link">Playground</a>
+                <a href="#progress" class="nav-link">Progress</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <input type="text" class="search-box" id="searchBox" placeholder="Search courses...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Master Technology, One Step at a Time</h1>
+            <p>Complete learning platform with roadmaps, video lectures, interactive coding, challenges, and real projects</p>
+            <div class="hero-stats">
+                <div class="stat"><h3>8+</h3><p>Tech Fields</p></div>
+                <div class="stat"><h3>200+</h3><p>Video Lectures</p></div>
+                <div class="stat"><h3>500+</h3><p>Challenges</p></div>
+                <div class="stat"><h3>50+</h3><p>Projects</p></div>
+            </div>
+            <button class="btn-hero" onclick="document.getElementById('roadmaps').scrollIntoView({behavior:'smooth'})">
+                Start Learning Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Roadmaps Section -->
+    <section id="roadmaps" class="section">
+        <div class="container">
+            <h2 class="section-title">Learning Roadmaps</h2>
+            <p class="section-subtitle">Step-by-step guided paths to master any technology</p>
+            <div class="roadmap-grid" id="roadmapGrid"></div>
+        </div>
+    </section>
+
+    <!-- Course Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div id="courseContent"></div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content video-modal-content">
+            <span class="close" id="closeVideoModal">&times;</span>
+            <div id="videoPlayer"></div>
+        </div>
+    </div>
+
+    <!-- Challenge Modal -->
+    <div id="challengeModal" class="modal">
+        <div class="modal-content challenge-modal-content">
+            <span class="close" id="closeChallengeModal">&times;</span>
+            <div id="challengeContent"></div>
+        </div>
+    </div>
+
+    <!-- Challenges Section -->
+    <section id="challenges" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Practice Challenges</h2>
+            <p class="section-subtitle">Level up your skills with hands-on coding challenges</p>
+            <div class="challenge-filters">
+                <button class="filter-btn active" data-level="all">All Levels</button>
+                <button class="filter-btn" data-level="beginner">Beginner</button>
+                <button class="filter-btn" data-level="intermediate">Intermediate</button>
+                <button class="filter-btn" data-level="advanced">Advanced</button>
+            </div>
+            <div class="challenges-grid" id="challengesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Code Playground Section -->
+    <section id="playground" class="section">
+        <div class="container">
+            <h2 class="section-title">Code Playground</h2>
+            <p class="section-subtitle">Write, run, and test your code in real-time</p>
+            <div class="playground-container">
+                <div class="playground-header">
+                    <select id="languageSelect" class="language-select">
+                        <option value="javascript">JavaScript</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="python">Python</option>
+                    </select>
+                    <button class="btn-run" id="runCode"><i class="fas fa-play"></i> Run Code</button>
+                    <button class="btn-clear" id="clearCode"><i class="fas fa-trash"></i> Clear</button>
+                    <button class="btn-save" id="saveCode"><i class="fas fa-save"></i> Save</button>
+                </div>
+                <div class="playground-editor">
+                    <textarea id="codeEditor" class="code-editor" placeholder="Write your code here...">// Write your JavaScript code here
+console.log('Hello, World!');</textarea>
+                </div>
+                <div class="playground-output">
+                    <h4>Output:</h4>
+                    <pre id="codeOutput" class="code-output">Run your code to see output...</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="progress" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Your Learning Progress</h2>
+            <div class="progress-dashboard">
+                <div class="progress-card">
+                    <h3>Overall Progress</h3>
+                    <div class="circular-progress">
+                        <svg width="200" height="200">
+                            <circle cx="100" cy="100" r="90" class="progress-bg"></circle>
+                            <circle cx="100" cy="100" r="90" class="progress-circle" id="overallProgress"></circle>
+                        </svg>
+                        <div class="progress-text" id="progressText">0%</div>
+                    </div>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-video"></i>
+                        <h4 id="videosWatched">0</h4>
+                        <p>Videos Watched</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-code"></i>
+                        <h4 id="challengesSolved">0</h4>
+                        <p>Challenges Solved</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-project-diagram"></i>
+                        <h4 id="projectsCompleted">0</h4>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <h4 id="certificatesEarned">0</h4>
+                        <p>Certificates Earned</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Achievements -->
+            <div class="achievements-section">
+                <h3>Recent Achievements</h3>
+                <div class="achievements-grid">
+                    <div class="achievement-badge">
+                        <i class="fas fa-star"></i>
+                        <p>First Steps</p>
+                        <small>Complete your first lesson</small>
+                    </div>
+                    <div class="achievement-badge locked">
+                        <i class="fas fa-fire"></i>
+                        <p>7 Day Streak</p>
+                        <small>Learn for 7 days straight</small>
+                    </div>
+                    <div class="achievement-badge locked">
+                        <i class="fas fa-crown"></i>
+                        <p>Challenge Master</p>
+                        <small>Solve 50 challenges</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Download Certificate</h2>
+            <p class="section-subtitle">Complete courses to earn certificates</p>
+            <div class="certificate-container">
+                <div class="certificate-preview">
+                    <div class="certificate">
+                        <div class="certificate-border">
+                            <h2>Certificate of Completion</h2>
+                            <p class="certificate-text">This is to certify that</p>
+                            <h3 class="certificate-name">Your Name</h3>
+                            <p class="certificate-text">has successfully completed</p>
+                            <h4 class="certificate-course">Course Name</h4>
+                            <p class="certificate-date">Date: January 2025</p>
+                            <div class="certificate-signature">
+                                <p>Ritika Tech Hub</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-primary" id="downloadCertificate">
+                    <i class="fas fa-download"></i> Download Certificate
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ritika Tech Hub</h3>
+                    <p>Your complete learning platform for mastering technology</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#roadmaps">Roadmaps</a>
+                    <a href="#challenges">Challenges</a>
+                    <a href="#playground">Playground</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Community</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ritika Tech Hub. Built with ❤️ by Bhindi AI</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
