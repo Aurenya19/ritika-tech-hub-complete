@@ -1,0 +1,11 @@
+# Render.com Configuration
+# This file tells Render how to build and deploy your app
+
+# Build settings
+buildCommand = "cd backend && npm install"
+startCommand = "cd backend && npm start"
+
+# Environment
+[env]
+NODE_ENV = "production"
+PORT = "5000"
